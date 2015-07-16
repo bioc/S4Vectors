@@ -530,10 +530,9 @@ setMethod("runq", "Rle",
 ### Other character data methods
 ###
 
-setMethod("nchar", "Rle",
-          function(x, type = "chars", allowNA = FALSE)
-              Rle(values = nchar(runValue(x), type = type, allowNA = allowNA),
-                  lengths = runLength(x), check = FALSE))
+.nchar_Rle <- function(x, type = "chars", allowNA = FALSE)
+    Rle(values = nchar(runValue(x), type = type, allowNA = allowNA),
+        lengths = runLength(x), check = FALSE)
 
 setMethod("substr", "Rle",
           function(x, start, stop)
