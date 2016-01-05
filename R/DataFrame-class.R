@@ -629,6 +629,8 @@ setAs("AsIs", "DataFrame",
 
 setAs("ANY", "AsIs", function(from) I(from))
 
+setAs("ANY", "DataTableORNULL", function(from) as(from, "DataFrame"))
+
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ### Combining.
 ###
