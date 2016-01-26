@@ -28,11 +28,12 @@ SEXP _extract_window_from_vectorORfactor(SEXP x, int start, int end)
 		UNPROTECT(1);
 	}
 	if (isFactor(x)) {
-		PROTECT(ans_class = duplicate(GET_CLASS(x)));
-		SET_CLASS(ans, ans_class);
-		UNPROTECT(1);
+		/* Levels must be set before class. */
 		PROTECT(ans_levels = duplicate(GET_LEVELS(x)));
 		SET_LEVELS(ans, ans_levels);
+		UNPROTECT(1);
+		PROTECT(ans_class = duplicate(GET_CLASS(x)));
+		SET_CLASS(ans, ans_class);
 		UNPROTECT(1);
 	}
 	UNPROTECT(1);
