@@ -66,3 +66,30 @@ quick_unsplit <- function(x, f)
     quick_unlist(x)[revidx]
 }
 
+
+### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+### extract_data_frame_rows()
+###
+### A fast version of {df <- df[i, , drop=FALSE]; rownames(df) <- NULL}.
+### Can be up to 20x or 30x faster when extracting millions of rows.
+### What kills [.data.frame is the overhead of propagating the original
+### rownames and trying to keep them unique with make.unique(). However, most
+### of the time, nobody cares about the rownames so this effort is pointless
+### and only a waste of time.
+###
+
+### NOT exported.
+extract_data_frame_rows <- function(x, i)
+{
+    stopifnot(is.data.frame(x))
+    ## The commented code should be as fast (or even faster, because 'i' is
+    ## normalized only once) as the code below but unfortunately it's not.
+    ## TODO: Investigate why and make it as fast as the code below.
+    #i <- normalizeSingleBracketSubscript(i, x, exact=FALSE, as.NSBS=TRUE)
+    #data.frame(lapply(x, extractROWS, i),
+    #           check.names=FALSE, stringsAsFactors=FALSE)
+    i <- normalizeSingleBracketSubscript(i, x, exact=FALSE)
+    data.frame(lapply(x, "[", i),
+               check.names=FALSE, stringsAsFactors=FALSE)
+}
+
