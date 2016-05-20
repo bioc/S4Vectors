@@ -6,6 +6,7 @@
 \alias{union,Vector,Vector-method}
 \alias{intersect,Vector,Vector-method}
 \alias{setdiff,Vector,Vector-method}
+\alias{setequal,Vector,Vector-method}
 
 \title{Set operations on vector-like objects}
 
