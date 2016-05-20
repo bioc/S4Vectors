@@ -12,11 +12,12 @@
 }
 
 \details{
-  \code{union(x, y)}, \code{intersect(x, y)}, and \code{setdiff(x, y)}
-  work on \link{Hits} objects \code{x} and \code{y} only if the objects
-  are \emph{compatible}, that is, if they have the same subject and query
-  lengths. These operations return respectively the union, intersection,
-  and (asymmetric!) difference of the sets of hits in \code{x} and \code{y}.
+  \code{union(x, y)}, \code{intersect(x, y)}, \code{setdiff(x, y)}, and
+  \code{setequal(x, y)} work on \link{Hits} objects \code{x} and \code{y}
+  only if the objects are \emph{compatible Hits objects}, that is, if they
+  have the same subject and query lengths. These operations return respectively
+  the union, intersection, (asymmetric!) difference, and equality of the
+  \emph{sets} of hits in \code{x} and \code{y}.
 }
 
 \value{
@@ -29,8 +30,11 @@
   \code{setdiff} returns a \link{Hits} object obtained by dropping from
   \code{x} the hits that are in \code{y}.
 
-  All these operations propagate the names and metadata columns of their
-  first argument (\code{x}).
+  \code{setequal} returns \code{TRUE} if \code{x} and \code{y} contain the
+  same \emph{sets} of hits and \code{FALSE} otherwise.
+
+  \code{union}, \code{intersect}, and \code{setdiff} propagate the names and
+  metadata columns of their first argument (\code{x}).
 }
 
 \author{Hervé Pagès and Michael Lawrence}
@@ -67,6 +71,8 @@ intersect(y, x)  # same hits as in intersect(x, y), but in
 
 setdiff(x, y)
 setdiff(y, x)
+
+setequal(x, y)
 }
 
 \keyword{methods}

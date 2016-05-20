@@ -19,3 +19,7 @@ setMethod("setdiff", c("Vector", "Vector"),
     function(x, y) unique(x[!(x %in% y)])
 )
 
+setMethod("setequal", c("Vector", "Vector"),
+    function(x, y) all(x %in% y) && all(y %in% x)
+)
+
