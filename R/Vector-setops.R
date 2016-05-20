@@ -7,8 +7,15 @@
 ###
 
 
-setMethod("union", c("Hits", "Hits"),
-    function(x, y)
-        as(callNextMethod(as(x, "Hits"), as(y, "Hits")), class(x))
+setMethod("union", c("Vector", "Vector"),
+    function(x, y) unique(c(x, y))
+)
+
+setMethod("intersect", c("Vector", "Vector"),
+    function(x, y) unique(x[x %in% y])
+)
+
+setMethod("setdiff", c("Vector", "Vector"),
+    function(x, y) unique(x[!(x %in% y)])
 )
 
