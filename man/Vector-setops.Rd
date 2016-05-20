@@ -1,7 +1,6 @@
 \name{Vector-setops}
 
 \alias{Vector-setops}
-\alias{setops-methods}
 
 \alias{union,Vector,Vector-method}
 \alias{intersect,Vector,Vector-method}

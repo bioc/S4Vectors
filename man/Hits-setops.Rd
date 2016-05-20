@@ -1,7 +1,6 @@
 \name{Hits-setops}
 
 \alias{Hits-setops}
-\alias{setops-methods}
 
 \alias{union,Hits,Hits-method}
 
