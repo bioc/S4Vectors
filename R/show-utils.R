@@ -378,7 +378,7 @@ setGeneric("showAsCell", function(object) standardGeneric("showAsCell"))
     if (object_ncol == 0L)
         return(rep.int("", nrow(object)))
     object <- lapply(head(seq_len(object_ncol), 3L),
-                     function(i) object[ , i, drop=TRUE])
+                     function(i) showAsCell(object[ , i, drop=TRUE]))
     ans <- do.call(paste, c(object, list(sep=":")))
     if (object_ncol > 3L)
         ans <- paste0(ans, ":...")
