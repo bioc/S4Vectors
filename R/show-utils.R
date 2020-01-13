@@ -407,27 +407,18 @@ setGeneric("showAsCell", function(object) standardGeneric("showAsCell"))
 
 .default_showAsCell <- function(object)
 {
-  ## Some objects like SplitDataFrameList have a "dim" method that
-  ## returns a non-MULL object (a matrix!) even though they don't have
-  ## an array-like semantic.
-  if (length(dim(object)) >= 2L && !is.matrix(dim(object)))
-    return(.showAsCell_array(object))
-  object_NROW <- NROW(object)
-  if (object_NROW == 0L)
-    return(character(0L))
-  attempt <- try(as.character(object), silent=TRUE)
-  if (!is(attempt, "try-error"))
-      return(attempt)
-  if (!is(object, "list_OR_List"))
-      return(rep.int("#####", object_NROW))
-  vapply(object,
-      function(x) {
-          str <- paste(showAsCell(head(x, 3L)), collapse=",")
-          if (length(x) > 3L)
-              str <- paste0(str, ",...")
-          str
-      },
-      character(1L))
+    ## Some objects like SplitDataFrameList have a "dim" method that
+    ## returns a non-MULL object (a matrix!) even though they don't have
+    ## an array-like semantic.
+    if (length(dim(object)) >= 2L && !is.matrix(dim(object)))
+        return(.showAsCell_array(object))
+    object_NROW <- NROW(object)
+    if (object_NROW == 0L)
+        return(character(0L))
+    attempt <- try(as.character(object), silent=TRUE)
+    if (!is(attempt, "try-error"))
+        return(attempt)
+    rep.int("#####", object_NROW)
 }
 
 setMethod("showAsCell", "ANY", .default_showAsCell)
