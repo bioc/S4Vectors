@@ -48,6 +48,7 @@
 % display
 \alias{classNameForDisplay,DFrame-method}
 \alias{show,DataFrame-method}
+\alias{showAsCell,DataFrame-method}
 
 % combining
 \alias{bindROWS,DataFrame-method}
