@@ -205,7 +205,7 @@ static int get_svn_time(time_t t, char *out, size_t out_size)
 }
 
 /* --- .Call ENTRY POINT --- */
-SEXP svn_time()
+SEXP svn_time(void)
 {
 	time_t t;
 	char buf[45];

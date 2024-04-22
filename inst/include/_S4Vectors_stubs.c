@@ -32,12 +32,12 @@ void stubname Targs \
  */
 
 DEFINE_NOVALUE_CCALLABLE_STUB(reset_ovflow_flag,
-	(),
+	(void),
 	()
 )
 
 DEFINE_CCALLABLE_STUB(int, get_ovflow_flag,
-	(),
+	(void),
 	()
 )
 

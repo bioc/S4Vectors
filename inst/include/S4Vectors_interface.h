@@ -17,9 +17,9 @@
  * (see safe_arithm.c)
  */
 
-void reset_ovflow_flag();
+void reset_ovflow_flag(void);
 
-int get_ovflow_flag();
+int get_ovflow_flag(void);
 
 int safe_int_add(
 	int x,

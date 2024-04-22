@@ -10,13 +10,13 @@
 
 static int ovflow_flag;
 
-void _reset_ovflow_flag()
+void _reset_ovflow_flag(void)
 {
 	ovflow_flag = 0;
 	return;
 }
 
-int _get_ovflow_flag()
+int _get_ovflow_flag(void)
 {
 	return ovflow_flag;
 }

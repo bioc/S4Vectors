@@ -17,7 +17,7 @@ int _is_LLint(SEXP x)
 }
 
 /* --- .Call ENTRY POINT --- */
-SEXP make_RAW_from_NA_LLINT()
+SEXP make_RAW_from_NA_LLINT(void)
 {
 	SEXP ans;
 
@@ -478,7 +478,7 @@ SEXP new_CHARACTER_from_LLint(SEXP x)
  * Operations from "Ops" group
  */
 
-static void print_not_multiple_warning()
+static void print_not_multiple_warning(void)
 {
 	warning("longer object length is not a multiple "
 		"of shorter object length");

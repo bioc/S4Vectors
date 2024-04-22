@@ -10,9 +10,9 @@
 
 /* safe_arithm.c */
 
-void _reset_ovflow_flag();
+void _reset_ovflow_flag(void);
 
-int _get_ovflow_flag();
+int _get_ovflow_flag(void);
 
 int _safe_int_add(
 	int x,
@@ -558,7 +558,7 @@ void _CharAEAE_append_string(
 
 SEXP _new_CHARACTER_from_CharAEAE(const CharAEAE *aeae);
 
-SEXP AEbufs_free();
+SEXP AEbufs_free(void);
 
 
 /* SEXP_utils.c */
@@ -575,7 +575,7 @@ SEXP anyMissing(SEXP x);
 
 int _is_LLint(SEXP x);
 
-SEXP make_RAW_from_NA_LLINT();
+SEXP make_RAW_from_NA_LLINT(void);
 
 int sscan_llint(
 	const char *s,
@@ -872,7 +872,7 @@ SEXP unstrsplit_list(SEXP x, SEXP sep);
 
 SEXP safe_strexplode(SEXP s);
 
-SEXP svn_time();
+SEXP svn_time(void);
 
 
 /* raw_utils.c */

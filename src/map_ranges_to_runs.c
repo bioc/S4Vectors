@@ -14,7 +14,7 @@ static char errmsg_buf[200];
    of subsetting some Vector derivative (like Rle and GPos objects), so
    we try to display error messages that makes sense in that context. */
 
-static char *VECTOR_TOO_LONG_errmsg()
+static char *VECTOR_TOO_LONG_errmsg(void)
 {
 	snprintf(errmsg_buf, sizeof(errmsg_buf),
 		 "subsetting a Vector derivative of length "
@@ -22,21 +22,21 @@ static char *VECTOR_TOO_LONG_errmsg()
 	return errmsg_buf;
 }
 
-static char *NA_INDICES_errmsg()
+static char *NA_INDICES_errmsg(void)
 {
 	snprintf(errmsg_buf, sizeof(errmsg_buf),
 		 "subscript contains NAs");
 	return errmsg_buf;
 }
 
-static char *OUTOFBOUND_INDICES_errmsg()
+static char *OUTOFBOUND_INDICES_errmsg(void)
 {
 	snprintf(errmsg_buf, sizeof(errmsg_buf),
 		 "subscript contains out-of-bounds indices");
 	return errmsg_buf;
 }
 
-static char *INVALID_RANGES_errmsg()
+static char *INVALID_RANGES_errmsg(void)
 {
 	snprintf(errmsg_buf, sizeof(errmsg_buf),
 		 "subscript contains invalid ranges "
@@ -45,7 +45,7 @@ static char *INVALID_RANGES_errmsg()
 	return errmsg_buf;
 }
 
-static char *OUTOFBOUND_RANGES_errmsg()
+static char *OUTOFBOUND_RANGES_errmsg(void)
 {
 	snprintf(errmsg_buf, sizeof(errmsg_buf),
 		 "subscript contains out-of-bounds ranges");

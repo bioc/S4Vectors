@@ -669,7 +669,7 @@ SEXP test_sort_ushort_array(SEXP x, SEXP desc)
  * sizeof(unsigned short int) is 2.
  */
 
-static int can_use_rxsort()
+static int can_use_rxsort(void)
 {
 	return sizeof(int) == 4 && sizeof(unsigned short int) == 2;
 }

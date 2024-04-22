@@ -122,7 +122,7 @@ size_t _IntAE_set_nelt(IntAE *ae, size_t nelt)
 	return ae->_nelt = nelt;
 }
 
-static IntAE *new_empty_IntAE()
+static IntAE *new_empty_IntAE(void)
 {
 	IntAE *ae;
 
@@ -373,7 +373,7 @@ static void IntAE_free(IntAE *ae)
 	return;
 }
 
-static void flush_IntAE_pool()
+static void flush_IntAE_pool(void)
 {
 	IntAE *ae;
 
@@ -425,7 +425,7 @@ size_t _IntAEAE_set_nelt(IntAEAE *aeae, size_t nelt)
 	return aeae->_nelt = nelt;
 }
 
-static IntAEAE *new_empty_IntAEAE()
+static IntAEAE *new_empty_IntAEAE(void)
 {
 	IntAEAE *aeae;
 
@@ -655,7 +655,7 @@ static void IntAEAE_free(IntAEAE *aeae)
 	return;
 }
 
-static void flush_IntAEAE_pool()
+static void flush_IntAEAE_pool(void)
 {
 	IntAEAE *aeae;
 
@@ -688,7 +688,7 @@ size_t _IntPairAE_set_nelt(IntPairAE *ae, size_t nelt)
 	return nelt;
 }
 
-static IntPairAE *new_empty_IntPairAE()
+static IntPairAE *new_empty_IntPairAE(void)
 {
 	IntAE *a, *b;
 	IntPairAE *ae;
@@ -749,7 +749,7 @@ static void IntPairAE_free(IntPairAE *ae)
 	return;
 }
 
-static void flush_IntPairAE_pool()
+static void flush_IntPairAE_pool(void)
 {
 	IntPairAE *ae;
 
@@ -801,7 +801,7 @@ size_t _IntPairAEAE_set_nelt(IntPairAEAE *aeae, size_t nelt)
 	return aeae->_nelt = nelt;
 }
 
-static IntPairAEAE *new_empty_IntPairAEAE()
+static IntPairAEAE *new_empty_IntPairAEAE(void)
 {
 	IntPairAEAE *aeae;
 
@@ -896,7 +896,7 @@ static void IntPairAEAE_free(IntPairAEAE *aeae)
 	return;
 }
 
-static void flush_IntPairAEAE_pool()
+static void flush_IntPairAEAE_pool(void)
 {
 	IntPairAEAE *aeae;
 
@@ -931,7 +931,7 @@ size_t _LLongAE_set_nelt(LLongAE *ae, size_t nelt)
 	return ae->_nelt = nelt;
 }
 
-static LLongAE *new_empty_LLongAE()
+static LLongAE *new_empty_LLongAE(void)
 {
 	LLongAE *ae;
 
@@ -1016,7 +1016,7 @@ static void LLongAE_free(LLongAE *ae)
 	return;
 }
 
-static void flush_LLongAE_pool()
+static void flush_LLongAE_pool(void)
 {
 	LLongAE *ae;
 
@@ -1068,7 +1068,7 @@ size_t _LLongAEAE_set_nelt(LLongAEAE *aeae, size_t nelt)
 	return aeae->_nelt = nelt;
 }
 
-static LLongAEAE *new_empty_LLongAEAE()
+static LLongAEAE *new_empty_LLongAEAE(void)
 {
 	LLongAEAE *aeae;
 
@@ -1161,7 +1161,7 @@ static void LLongAEAE_free(LLongAEAE *aeae)
 	return;
 }
 
-static void flush_LLongAEAE_pool()
+static void flush_LLongAEAE_pool(void)
 {
 	LLongAEAE *aeae;
 
@@ -1196,7 +1196,7 @@ size_t _DoubleAE_set_nelt(DoubleAE *ae, size_t nelt)
 	return ae->_nelt = nelt;
 }
 
-static DoubleAE *new_empty_DoubleAE()
+static DoubleAE *new_empty_DoubleAE(void)
 {
 	DoubleAE *ae;
 
@@ -1343,7 +1343,7 @@ static void DoubleAE_free(DoubleAE *ae)
 	return;
 }
 
-static void flush_DoubleAE_pool()
+static void flush_DoubleAE_pool(void)
 {
 	DoubleAE *ae;
 
@@ -1378,7 +1378,7 @@ size_t _CharAE_set_nelt(CharAE *ae, size_t nelt)
 	return ae->_nelt = nelt;
 }
 
-static CharAE *new_empty_CharAE()
+static CharAE *new_empty_CharAE(void)
 {
 	CharAE *ae;
 
@@ -1540,7 +1540,7 @@ static void CharAE_free(CharAE *ae)
 	return;
 }
 
-static void flush_CharAE_pool()
+static void flush_CharAE_pool(void)
 {
 	CharAE *ae;
 
@@ -1592,7 +1592,7 @@ size_t _CharAEAE_set_nelt(CharAEAE *aeae, size_t nelt)
 	return aeae->_nelt = nelt;
 }
 
-static CharAEAE *new_empty_CharAEAE()
+static CharAEAE *new_empty_CharAEAE(void)
 {
 	CharAEAE *aeae;
 
@@ -1713,7 +1713,7 @@ static void CharAEAE_free(CharAEAE *aeae)
 	return;
 }
 
-static void flush_CharAEAE_pool()
+static void flush_CharAEAE_pool(void)
 {
 	CharAEAE *aeae;
 
@@ -1730,7 +1730,7 @@ static void flush_CharAEAE_pool()
  * Freeing the malloc-based AEbufs.
  */
 
-SEXP AEbufs_free()
+SEXP AEbufs_free(void)
 {
 	flush_IntAE_pool();
 	flush_IntAEAE_pool();
