@@ -1,3 +1,17 @@
+CHANGES IN VERSION 0.42.0
+-------------------------
+
+NEW FEATURES
+
+    o Add 'make.names' argument to as.data.frame() method for DataFrame.
+      See https://github.com/Bioconductor/S4Vectors/issues/121
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Document global options 'showHeadLines' and 'showTailLines'.
+
+
+
 CHANGES IN VERSION 0.40.0
 -------------------------
 
