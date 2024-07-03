@@ -250,7 +250,10 @@ coerceToSimpleList <- function(from, element.type)
     listData <- as.list(from)
     if (coerce_list_elts)
         listData <- lapply(listData, coercerToClass(element.type))
-    new_SimpleList_from_list(SimpleListClass, listData)
+    ans <- new_SimpleList_from_list(SimpleListClass, listData)
+    if (is(from, "List"))
+        mcols(ans) <- mcols(from)
+    ans
 }
 
 setAs("ANY", "SimpleList", function(from) {
