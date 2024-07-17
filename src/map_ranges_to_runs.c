@@ -414,7 +414,7 @@ static const char *ranges_mapper3(
 	for (i = 0; i < SEbuf_len; i++)
 		SEorder[i] = i;
 	ret = _sort_ints(SEorder, SEbuf_len, SEbuf, 0, 1, NULL, NULL);
-	if (ret != 0)
+	if (ret < 0)
 		snprintf(errmsg_buf, sizeof(errmsg_buf),
 			 "ranges_mapper3: memory allocation failed");
 
@@ -492,7 +492,7 @@ static const char *positions_mapper3(
 	for (i = 0; i < npos; i++)
 		POSorder[i] = i;
 	ret = _sort_ints(POSorder, npos, pos, 0, 1, NULL, NULL);
-	if (ret != 0)
+	if (ret < 0)
 		snprintf(errmsg_buf, sizeof(errmsg_buf),
 			 "positions_mapper3: memory allocation failed");
 

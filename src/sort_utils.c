@@ -231,12 +231,12 @@ static int lucky_sort_targets(int *base, int base_len,
 		tmp = base[0];
 		base[0] = base[1];
 		base[1] = tmp;
-		return 1;
+		return 2;
 	}
 
 	if (base_len <= qsort_cutoff) {
 		qsort_targets(base, base_len, targets, descs, ntarget);
-		return 1;
+		return 3;
 	}
 	return 0;
 }
@@ -1013,21 +1013,25 @@ void _get_order_of_int_array(const int *x, int nelt,
 }
 
 /* base: 0-based indices into 'x'.
-   rxbuf1, rxbuf2: NULL or user-allocated buffers of length 'base_len'. */
+   rxbuf1, rxbuf2: NULL or user-allocated buffers of length 'base_len'.
+   Returns 0 if nothing to sort, that is, if 'base' is already sorted with
+   respect to 'x'. Otherwise returns 1, or a negative value if an error
+   occurred. */
 int _sort_ints(int *base, int base_len,
 	       const int *x,
 	       int desc,
 	       int use_radix, unsigned short int *rxbuf1, int *rxbuf2)
 {
-	int qsort_cutoff, auto_rxbuf1, auto_rxbuf2;
+	int qsort_cutoff, ret, auto_rxbuf1, auto_rxbuf2;
 
 	rxtargets[0] = x;
 	rxdescs[0] = desc;
 
 	qsort_cutoff = (use_radix && can_use_rxsort()) ? 1024 : base_len;
-	if (lucky_sort_targets(base, base_len, rxtargets, rxdescs, 1,
-			       qsort_cutoff))
-		return 0;
+	ret = lucky_sort_targets(base, base_len, rxtargets, rxdescs, 1,
+			         qsort_cutoff);
+	if (ret != 0)
+		return ret != 1;
 
 	auto_rxbuf1 = rxbuf1 == NULL;
 	if (auto_rxbuf1) {
@@ -1050,7 +1054,7 @@ int _sort_ints(int *base, int base_len,
 		free(rxbuf2);
 	if (auto_rxbuf1)
 		free(rxbuf1);
-	return 0;
+	return 1;
 }
 
 
@@ -1132,13 +1136,16 @@ void _get_order_of_int_pairs(const int *a, const int *b, int nelt,
 }
 
 /* base: 0-based indices into 'a' and 'b'.
-   rxbuf1, rxbuf2: NULL or user-allocated buffers of length 'base_len'. */
+   rxbuf1, rxbuf2: NULL or user-allocated buffers of length 'base_len'.
+   Returns 0 if nothing to sort, that is, if 'base' is already sorted with
+   respect to targets 'a' and 'b'. Otherwise returns 1, or a negative value
+   if an error occurred. */
 int _sort_int_pairs(int *base, int base_len,
 		const int *a, const int *b,
 		int a_desc, int b_desc,
 		int use_radix, unsigned short int *rxbuf1, int *rxbuf2)
 {
-	int qsort_cutoff, auto_rxbuf1, auto_rxbuf2;
+	int qsort_cutoff, ret, auto_rxbuf1, auto_rxbuf2;
 
 	rxtargets[0] = a;
 	rxtargets[1] = b;
@@ -1146,9 +1153,10 @@ int _sort_int_pairs(int *base, int base_len,
 	rxdescs[1] = b_desc;
 
 	qsort_cutoff = (use_radix && can_use_rxsort()) ? 512 : base_len;
-	if (lucky_sort_targets(base, base_len, rxtargets, rxdescs, 2,
-			       qsort_cutoff))
-		return 0;
+	ret = lucky_sort_targets(base, base_len, rxtargets, rxdescs, 2,
+			         qsort_cutoff);
+	if (ret != 0)
+		return ret != 1;
 
 	auto_rxbuf1 = rxbuf1 == NULL;
 	if (auto_rxbuf1) {
@@ -1171,7 +1179,7 @@ int _sort_int_pairs(int *base, int base_len,
 		free(rxbuf2);
 	if (auto_rxbuf1)
 		free(rxbuf1);
-	return 0;
+	return 1;
 }
 
 void _get_matches_of_ordered_int_pairs(
@@ -1267,13 +1275,16 @@ void _get_order_of_int_quads(const int *a, const int *b,
 }
 
 /* base: 0-based indices into 'a' and 'b'.
-   rxbuf1, rxbuf2: NULL or user-allocated buffers of length 'base_len'. */
+   rxbuf1, rxbuf2: NULL or user-allocated buffers of length 'base_len'.
+   Returns 0 if nothing to sort, that is, if 'base' is already sorted with
+   respect to targets 'a', 'b', 'c', and 'd'. Otherwise returns 1, or a
+   negative value if an error occurred. */
 int _sort_int_quads(int *base, int base_len,
 		const int *a, const int *b, const int *c, const int *d,
 		int a_desc, int b_desc, int c_desc, int d_desc,
 		int use_radix, unsigned short int *rxbuf1, int *rxbuf2)
 {
-	int qsort_cutoff, auto_rxbuf1, auto_rxbuf2;
+	int qsort_cutoff, ret, auto_rxbuf1, auto_rxbuf2;
 
 	rxtargets[0] = a;
 	rxtargets[1] = b;
@@ -1285,9 +1296,10 @@ int _sort_int_quads(int *base, int base_len,
 	rxdescs[3] = d_desc;
 
 	qsort_cutoff = (use_radix && can_use_rxsort()) ? 256 : base_len;
-	if (lucky_sort_targets(base, base_len, rxtargets, rxdescs, 4,
-			       qsort_cutoff))
-		return 0;
+	ret = lucky_sort_targets(base, base_len, rxtargets, rxdescs, 4,
+				 qsort_cutoff);
+	if (ret != 0)
+		return ret != 1;
 
 	auto_rxbuf1 = rxbuf1 == NULL;
 	if (auto_rxbuf1) {
@@ -1310,7 +1322,7 @@ int _sort_int_quads(int *base, int base_len,
 		free(rxbuf2);
 	if (auto_rxbuf1)
 		free(rxbuf1);
-	return 0;
+	return 1;
 }
 
 void _get_matches_of_ordered_int_quads(

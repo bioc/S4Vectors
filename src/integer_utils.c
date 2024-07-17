@@ -248,7 +248,7 @@ SEXP Integer_order(SEXP x, SEXP decreasing, SEXP use_radix)
 		       LOGICAL(decreasing)[0],
 		       LOGICAL(use_radix)[0], NULL, NULL);
 	UNPROTECT(1);
-	if (i != 0)
+	if (i < 0)
 		error("S4Vectors internal error in Integer_order(): "
 		      "memory allocation failed");
 	return ans;
@@ -347,7 +347,7 @@ SEXP Integer_order2(SEXP a, SEXP b, SEXP decreasing, SEXP use_radix)
 			    LOGICAL(decreasing)[1],
 			    LOGICAL(use_radix)[0], NULL, NULL);
 	UNPROTECT(1);
-	if (i != 0)
+	if (i < 0)
 		error("S4Vectors internal error in Integer_order2(): "
 		      "memory allocation failed");
 	return ans;
@@ -534,7 +534,7 @@ SEXP Integer_order4(SEXP a, SEXP b, SEXP c, SEXP d,
 			    LOGICAL(decreasing)[3],
 			    LOGICAL(use_radix)[0], NULL, NULL);
 	UNPROTECT(1);
-	if (i != 0)
+	if (i < 0)
 		error("S4Vectors internal error in Integer_order4(): "
 		      "memory allocation failed");
 	return ans;
