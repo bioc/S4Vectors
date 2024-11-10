@@ -11,8 +11,13 @@
 ###   stop(wmsg(...))
 ###   warning(wmsg(...))
 ###   message(wmsg(...))
-wmsg <- function(...)
-    paste0(strwrap(paste0(c(...), collapse="")), collapse="\n  ")
+### Argument 'margin' added in S4Vectors 0.45.1 and used in package igblastr.
+wmsg <- function(..., margin=2)
+{
+    width <- getOption("width") - margin
+    paste0(strwrap(paste0(c(...), collapse=""), width=width),
+           collapse=paste0("\n", strrep(" ", margin)))
+}
 
 errorIfWarning <- function(expr)
 {
