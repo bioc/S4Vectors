@@ -271,6 +271,8 @@ setMethod("summary", "FilterRules",
 
 setClass("FilterClosure", contains = "function")
 
+if (FALSE) {
+## R 4.7 may prune S4 class "standardGeneric", and these are unused
 setClass("GenericFilterClosure", contains = "FilterClosure")
 
 setClass("StandardGenericFilterClosure",
@@ -279,6 +281,7 @@ setClass("StandardGenericFilterClosure",
 setAs("standardGeneric", "FilterClosure", function(from) {
           new("StandardGenericFilterClosure", from)
       })
+}
 
 setAs("function", "FilterClosure", function(from) {
           new("FilterClosure", from)
